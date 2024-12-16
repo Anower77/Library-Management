@@ -1,0 +1,6 @@
+{% comment %} {% csrf_token %} {% endcomment %}
+<h1>Hi dear {{ user.username }},</h1>
+<p style="font-weight: bold;font-size: 30px;">Deposit notice</p>
+<p>{{ amount }} has been deposited to your account at {{ current_time }}.</p>
+<br>
+<p>Thanks from Books-Library</p>

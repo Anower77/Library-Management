@@ -1,0 +1,4 @@
+library_management/.env
+/env
+*.env
+.vscode

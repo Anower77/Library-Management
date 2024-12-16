@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block cssLink %}
+    <link rel="stylesheet" href="{% static "css/homepage.css" %}">
+{% endblock cssLink %}
+{% block mainContent %}
+    <main>
+        <section class="container mt-5" id="books">
+            <div>
+                <h2 class="fw-bold">Books category</h2>
+                <div>
+                    <a href="{% url "home_page" %}"
+                       title="click for view this category books"
+                       class="btn btn-dark m-2">All</a>
+                    {% for category in categories %}
+                        <a href="{% url "filter_category" category.slug %}"
+                           title="click for view this category books"
+                           class="btn btn-secondary m-2">{{ category.name|title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section class="container mt-5">
+            <h2 class="fw-bold my-2 mb-5">All books</h2>
+            <div class="row">
+                {% for book in books %}
+                    <div class="col-12 col-md-3">
+                        <div class="card" style="width: 100%;">
+                            <img src="{{ book.image.url }}" class="card-img-top img-book" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ book.name }}</h5>
+                                <p class="card-text">{{ book.description|truncatewords:10 }}</p>
+                                <p class="card-text">
+                                    Price: <b>{{ book.price }}Tk</b>  
+                                </p>
+                                <p class="p-1">
+                                    Categories:
+                                    {% for cat in book.category.all %}<small class="mx-1">{{ cat.name }},</small>{% endfor %}
+                                </p>
+                                <a href="{% url "book_details" book.slug %}" class="btn btn-secondary">View</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock mainContent %}
