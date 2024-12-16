@@ -14,6 +14,7 @@ pillow
 pipenv
 platformdirs
 psycopg2
+psycopg2-binary
 pydot
 pygraphviz
 pyparsing
@@ -22,7 +23,7 @@ setuptools
 sqlparse
 typing_extensions
 tzdata
-virtua
-
+virtualenv
+wheel
 
 # pip freeze | py -c "for p in __import__('sys').stdin: print(p.split('=')[0])"
